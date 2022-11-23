@@ -14,6 +14,17 @@
  * limitations under the License.
  */
 
+variable "autoscaling_config" {
+  description = "Settings for autoscaling of the instance. Only one of autoscaling_config or num_nodes should be set. If both are set, num_nodes is ignored."
+  type = object({
+    min_nodes      = number
+    max_nodes      = number
+    cpu_target     = number
+    storage_target = number
+  })
+  default = null
+}
+
 variable "cluster_id" {
   description = "The ID of the Cloud Bigtable cluster."
   type        = string
